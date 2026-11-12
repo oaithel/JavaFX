@@ -1,7 +1,7 @@
 package com.mac190.project;
 
 /*
-Create one sigle final Bank object and have a menu to
+Create one single final Bank object and have a menu to
 manage the Bank.
  */
 public class Main {
