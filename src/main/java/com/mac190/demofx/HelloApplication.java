@@ -21,8 +21,8 @@ public class HelloApplication extends Application {
         BorderPane root = new BorderPane();
         //create three buttons
         Button plusBtn = new Button("+");
-        int width = 50;
-        int height = 50;
+        int width = 40;
+        int height = 40;
         plusBtn.setPrefWidth(width);
         plusBtn.setPrefHeight(height);
         Button minusBtn = new Button("-");
@@ -52,6 +52,8 @@ public class HelloApplication extends Application {
         Label resultLbl = new Label("Result: ");
         Label num1Lbl = new Label("Num1: ");
         TextField num1Text = new TextField();
+        num1Text.minWidth(30);
+        num1Text.maxWidth(50);
         Label num2Lbl = new Label("Num2: ");
         TextField num2Text = new TextField();
         VBox textBox = new VBox();
