@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -52,26 +53,38 @@ public class Calculator {
         Label num1Lbl = new Label("Num1: ");
         num1Lbl.setFont(Font.font(16));
         TextField num1Text = new TextField();
-        HBox num1Box = new HBox();
+        //USE GRIDPANE for num1Label and num1 text, num2labl, num2Text
+        /*HBox num1Box = new HBox();
         num1Box.setSpacing(5);
         num1Box.getChildren().addAll(num1Lbl, num1Text);
+         */
         num1Text.minWidth(30);
         num1Text.maxWidth(50);
         Label num2Lbl = new Label("Num2: ");
         TextField num2Text = new TextField();
-        HBox num2Box = new HBox();
+        /*HBox num2Box = new HBox();
         num2Box.setSpacing(5);
         num2Box.getChildren().addAll(num2Lbl, num2Text);
+         */
         num2Text.minWidth(30);
         num2Text.maxWidth(50);
         num2Lbl.setFont(Font.font(16));
-        VBox numBox = new VBox();
+        /*VBox numBox = new VBox();
         numBox.setSpacing(10);
         numBox.setAlignment(Pos.TOP_LEFT);
         numBox.getChildren().addAll(num1Box, num2Box);
+
+         */
+        GridPane numGrid = new GridPane();
+        numGrid.add(num1Lbl, 0, 0);
+        numGrid.add(num1Text, 1, 0);
+        numGrid.add(num2Lbl, 0, 1);
+        numGrid.add(num2Text, 1, 1);
+        numGrid.setVgap(20);
+        numGrid.setHgap(10);
         VBox textBox = new VBox();
         textBox.setSpacing(70);
-        textBox.getChildren().addAll(numBox, resultLbl);
+        textBox.getChildren().addAll(numGrid, resultLbl);
 
         //setting the + button to do something when clicked
         plusBtn.setOnAction(e->{
