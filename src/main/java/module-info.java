@@ -2,6 +2,7 @@ module com.mac190.demofx {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.graphics;
+    requires com.mac190.demofx;
 
 
     opens com.mac190.demofx to javafx.fxml;
