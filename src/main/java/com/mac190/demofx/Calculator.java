@@ -1,9 +1,6 @@
 package com.mac190.demofx;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -11,16 +8,14 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
-import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.text.*;
 
-public class HelloApplication extends Application {
-    @Override
-    public void start(Stage stage) throws IOException {
-        //Create a parent container for eh application
-        BorderPane root = new BorderPane();
+public class Calculator {
+    private BorderPane root;
+
+    public Calculator(){
+        root = new BorderPane();
         //create three buttons
         Button plusBtn = new Button("+");
         int width = 40;
@@ -38,7 +33,7 @@ public class HelloApplication extends Application {
         divideBtn.setPrefWidth(width);
         divideBtn.setPrefHeight(height);
         Button equalBtn = new Button("=");
-       //equalBtn.setPrefWidth(2*width);
+        //equalBtn.setPrefWidth(2*width);
         //equalBtn.setPrefHeight(height);
         //Create a Vbo to add the 4 first buttons in a vertical way
         VBox buttonBox = new VBox();
@@ -80,13 +75,45 @@ public class HelloApplication extends Application {
 
         //setting the + button to do something when clicked
         plusBtn.setOnAction(e->{
-            System.out.println("Num1: " + num1Text.getText());
-            System.out.println("Num2: " + num2Text.getText());
+            //System.out.println("Num1: " + num1Text.getText());
+            //System.out.println("Num2: " + num2Text.getText());
             double num1 = Double.parseDouble(num1Text.getText());
             double num2 = Double.parseDouble(num2Text.getText());
-            System.out.println("Result: " + (num1+num2));
-            resultLbl.setText(resultLbl.getText() + (num1+num2));
+            //System.out.println("Result: " + (num1+num2));
+            resultLbl.setText("Result: " + (num1+num2));
         });
+        minusBtn.setOnAction(e->{
+            //System.out.println("Num1: " + num1Text.getText());
+            //System.out.println("Num2: " + num2Text.getText());
+            double num1 = Double.parseDouble(num1Text.getText());
+            double num2 = Double.parseDouble(num2Text.getText());
+            //System.out.println("Result: " + (num1+num2));
+            resultLbl.setText("Result: " + (num1-num2));
+        });
+        multiplyBtn.setOnAction(e->{
+            //System.out.println("Num1: " + num1Text.getText());
+            //System.out.println("Num2: " + num2Text.getText());
+            double num1 = Double.parseDouble(num1Text.getText());
+            double num2 = Double.parseDouble(num2Text.getText());
+            //System.out.println("Result: " + (num1+num2));
+            resultLbl.setText("Result: " + (num1*num2));
+        });
+        divideBtn.setOnAction(e->{
+            //System.out.println("Num1: " + num1Text.getText());
+            //System.out.println("Num2: " + num2Text.getText());
+            double num1 = Double.parseDouble(num1Text.getText());
+            double num2 = Double.parseDouble(num2Text.getText());
+            //System.out.println("Result: " + (num1+num2));
+            if(num2 == 0){
+                resultLbl.setText("Result: " + " NaN");
+            }else{
+
+                NumberFormat nf = NumberFormat.getInstance();
+                nf.setMaximumFractionDigits(3);
+                resultLbl.setText("Result: " + nf.format(num1 / num2));
+            }
+        });
+
 
 
         //put the two previous VBoxes one next to another
@@ -94,14 +121,8 @@ public class HelloApplication extends Application {
         finalBox.setSpacing(50);
         finalBox.getChildren().addAll(textBox, buttonBox);
         root.setCenter(finalBox);
-        //create a Scene
-        Scene scene = new Scene(root, 330, 300);
-        stage.setTitle("DemoFX");
-        stage.setScene(scene);
-        stage.show();
     }
-
-    public static void main(String[] args) {
-        launch();
+    public BorderPane getRoot(){
+        return root;
     }
 }
