@@ -14,7 +14,7 @@ public class MainrealCalculator extends Application {
         //create a Calculator object
         RealCalculator cal = new RealCalculator();
         //Create a parent container for eh application
-        BorderPane root = cal.getRoot();
+        BorderPane root = new BorderPane(); //cal.getRoot();
         //create a Scene
         Scene scene = new Scene(root, 330, 300);
         stage.setTitle("DemoFX");
