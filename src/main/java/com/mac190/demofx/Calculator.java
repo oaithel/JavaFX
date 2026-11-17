@@ -77,41 +77,57 @@ public class Calculator {
         plusBtn.setOnAction(e->{
             //System.out.println("Num1: " + num1Text.getText());
             //System.out.println("Num2: " + num2Text.getText());
-            double num1 = Double.parseDouble(num1Text.getText());
-            double num2 = Double.parseDouble(num2Text.getText());
-            //System.out.println("Result: " + (num1+num2));
-            resultLbl.setText("Result: " + (num1+num2));
+            try {
+                double num1 = Double.parseDouble(num1Text.getText());
+                double num2 = Double.parseDouble(num2Text.getText());
+                //System.out.println("Result: " + (num1+num2));
+                resultLbl.setText("Result: " + (num1 + num2));
+            }catch (NumberFormatException ex){
+                resultLbl.setText("Result: Invalid Input: " + ex.getMessage());
+            }
         });
         minusBtn.setOnAction(e->{
             //System.out.println("Num1: " + num1Text.getText());
             //System.out.println("Num2: " + num2Text.getText());
+           try{
             double num1 = Double.parseDouble(num1Text.getText());
             double num2 = Double.parseDouble(num2Text.getText());
             //System.out.println("Result: " + (num1+num2));
             resultLbl.setText("Result: " + (num1-num2));
+        }catch (NumberFormatException ex){
+            resultLbl.setText("Result: Invalid Input: " + ex.getMessage());
+        }
         });
         multiplyBtn.setOnAction(e->{
             //System.out.println("Num1: " + num1Text.getText());
             //System.out.println("Num2: " + num2Text.getText());
-            double num1 = Double.parseDouble(num1Text.getText());
-            double num2 = Double.parseDouble(num2Text.getText());
-            //System.out.println("Result: " + (num1+num2));
-            resultLbl.setText("Result: " + (num1*num2));
+            try{
+                double num1 = Double.parseDouble(num1Text.getText());
+                double num2 = Double.parseDouble(num2Text.getText());
+                //System.out.println("Result: " + (num1+num2));
+                resultLbl.setText("Result: " + (num1*num2));
+            }catch (NumberFormatException ex){
+                resultLbl.setText("Result: Invalid Input: " + ex.getMessage());
+            }
         });
         divideBtn.setOnAction(e->{
             //System.out.println("Num1: " + num1Text.getText());
             //System.out.println("Num2: " + num2Text.getText());
-            double num1 = Double.parseDouble(num1Text.getText());
-            double num2 = Double.parseDouble(num2Text.getText());
-            //System.out.println("Result: " + (num1+num2));
-            if(num2 == 0){
-                resultLbl.setText("Result: " + " NaN");
-            }else{
+           try {
+               double num1 = Double.parseDouble(num1Text.getText());
+               double num2 = Double.parseDouble(num2Text.getText());
+               //System.out.println("Result: " + (num1+num2));
+               if (num2 == 0) {
+                   resultLbl.setText("Result: " + " NaN");
+               } else {
 
-                NumberFormat nf = NumberFormat.getInstance();
-                nf.setMaximumFractionDigits(3);
-                resultLbl.setText("Result: " + nf.format(num1 / num2));
-            }
+                   NumberFormat nf = NumberFormat.getInstance();
+                   nf.setMaximumFractionDigits(3);
+                   resultLbl.setText("Result: " + nf.format(num1 / num2));
+               }
+           }catch (NumberFormatException ex){
+            resultLbl.setText("Result: Invalid Input: " + ex.getMessage());
+           }
         });
 
 
